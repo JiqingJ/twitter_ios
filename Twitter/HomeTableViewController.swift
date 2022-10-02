@@ -15,7 +15,6 @@ class HomeTableViewController: UITableViewController {
     let myRefreshControl = UIRefreshControl()
     
     
-    
     @objc func loadTweets() {
         
         numberOfTweet = 20
@@ -72,6 +71,12 @@ class HomeTableViewController: UITableViewController {
         loadTweets()
         myRefreshControl.addTarget(self, action: #selector(loadTweets), for: .valueChanged)
         tableView.refreshControl = myRefreshControl
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.loadTweets()
+        self.loadMoreTweets()
     }
     
     @IBAction func onLogout(_ sender: Any) {
